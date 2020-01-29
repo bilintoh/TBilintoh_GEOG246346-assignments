@@ -1,13 +1,11 @@
 Package: tb346a2
-Title: What the Package Does (One Line, Title Case)
+Title: GEOG246-346 coursework
 Version: 0.0.0.9000
-Authors@R: 
-    person(given = "First",
-           family = "Last",
-           role = c("aut", "cre"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: What license it uses
+Author: Thomas Bilintoh
+Maintainer: Thomas bilintoh <tbilintoh@clarku.edu>
+Description: Package for GEOG246-346 class assignments.
+Depends: R (>= 3.0.0)
+License: Clark
 Encoding: UTF-8
 LazyData: true
+RoxygenNote: 7.0.2
