@@ -1,0 +1,33 @@
+---
+title: "Overview of the lde3462a Package"
+author: "Thomas Bilintoh"
+date: "2020-01-28"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Overview}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+`tb3462a` is the second package I am developing for the coursework componenet of GEOG346 (GEOSPATIAL Analysis with R).
+
+It is currently a function called `mycalc` and executed as
+follows:
+```{r}
+library(tb346a2)
+x <- 1:5
+x
+y <- 2:6
+y
+mycalc(x=x,y=y,"sum")
+
+
+```
+
+I will be adding others, and updating this vignette as we go.
