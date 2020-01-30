@@ -1,5 +1,5 @@
 ---
-title: "Overview of the lde3462a Package"
+title: "Overview of the tb3462a Package"
 author: "Thomas Bilintoh"
 date: "2020-01-28"
 output: rmarkdown::html_vignette
@@ -26,6 +26,8 @@ x
 y <- 2:6
 y
 mycalc(x=x,y=y,"sum")
+
+
 
 
 ```
