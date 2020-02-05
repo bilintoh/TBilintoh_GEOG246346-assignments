@@ -19,7 +19,7 @@ knitr::opts_chunk$set(
 
 It is currently a function called `mycalc` and executed as
 follows:
-```{r}
+```{r, error = TRUE}
 library(tb346a2)
 
 set.seed(1)
@@ -37,49 +37,80 @@ m2<- cbind(v2,v3)
 m2
 m3<- cbind(v3,v4)
 
-m3 <- as.numeric(m3)
+m3 <- (m3)
 
 DF<- data.frame(v1,v2,v3,v4)
 DF
-colnames(DF) <- c( "a","b","c","grp")
+colnames(DF) <- c( "a", "b", "c", "grp")
 DF
 
 
-d1 <- mycalc(v1,v2,"sum")
+d1 <- mycalc(v1, v2, "sum")
 d1
-d2 <- mycalc(v2,v3,"sum")
+d2 <- mycalc(v2, v3, "sum")
 d2
-d3 <- mycalc(v1,v3,"sum")
+d3 <- mycalc(v1, v3, "sum")
 d3
-d4 <- mycalc(m1, m1,"sum")
+d4 <- mycalc(m1, m1, "sum")
 d4
 d5 <- mycalc(m1,m2,"sum")
 d5
-d6 <- mycalc(m2,m3,"sum")
+d6 <- mycalc(m2, m3, "sum")
 d6
 
-s1 <- mycalc(v1,v2,"divide")
+s1 <- mycalc(v1, v2, "divide")
 s1
-s2 <- mycalc(v2,v3,"divide")
+s2 <- mycalc(v2, v3, "divide")
 s2
-s3 <- mycalc(v1,v3,"divide")
+s3 <- mycalc(v1, v3, "divide")
 s3
-s4 <- mycalc(m1, m1,"divide")
+s4 <- mycalc(m1, m1, "divide")
 s4
-s5 <- mycalc(m1,m2,"divide")
+s5 <- mycalc(m1, m2, "divide")
 s5
-s6 <- mycalc(m2,m3,"divide")
+s6 <- mycalc(m2, m3, "divide")
 s6
-library(dplyr)
-DF <- DF %>% subset(grp == "E")
 
-mycalc(x=DF[1,1], y=DF[1,2], "multiply")
-mycalc(x=DF[1:10,1:3], y=DF[1:10,1:3], "multiply")
 
-mycalc(x=DF$a, y=DF$b, "divide")
-mycalc(x=DF$a, y=DF$c, "divide")
+df_mult_1 <- mycalc(x=DF[1,1], y=DF[1,2], "multiply")
+df_mult_1
 
+df_mult_2 <- mycalc(x=DF[1:10,1:3], y=DF[1:10,1:3], "multiply")
+df_mult_2
+
+df_div_1 <- mycalc(x=DF[which(DF$grp%in%c("E")),]$a, y=DF[which(DF$grp%in%c("E")),]$b, "divide")
+df_div_1
+
+df_div_2 <- mycalc(x=DF[which(DF$grp%in%c("E")),]$a, y=DF[which(DF$grp%in%c("E")),]$c, "divide")
+df_div_2
+
+DF_div_1 <- DF[which(DF$grp%in%c("E")),]$a / DF[which(DF$grp%in%c("E")),]$b
+DF_div_1
+
+DF_div_2 <- DF[which(DF$grp%in%c("E")),]$a / DF[which(DF$grp%in%c("E")),]$c
+DF_div_2
+
+l <- list(v1,m1,m2)
+l
+
+l_sum<- lapply(l, sum)
+l_sum 
+
+k <- lapply(1:length(l),function(x){
+  mycalc(l[[x]],v2,"multiply")
+})
+k
+
+q <- sapply(1:length(l),function(x){
+  mycalc(l[[x]],v2,"multiply")
+})
+q
 
 ```
 
 I will be adding others, and updating this vignette as we go.
+
+```{r}
+
+```
+
