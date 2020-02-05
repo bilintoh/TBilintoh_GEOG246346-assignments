@@ -22,7 +22,7 @@ mycalc <- function(x,y, fun) {
   if(fun == "sum") {
     o <- (x+y)
   } else if(fun == "subtract") {
-    o <- (x-b)
+    o <- (x-y)
   } else if(fun == "divide") {
     o <- (x/y)
   } else if(fun == "multiply") {
