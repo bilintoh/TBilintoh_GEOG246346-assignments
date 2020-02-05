@@ -21,13 +21,63 @@ It is currently a function called `mycalc` and executed as
 follows:
 ```{r}
 library(tb346a2)
-x <- 1:5
-x
-y <- 2:6
-y
-mycalc(x=x,y=y,"sum")
+
+set.seed(1)
+v1 <- sample(0:100, 20, replace=T)
+v1
+v2 <- sample(1:10, 20, replace=T)
+v2
+v3 <- runif(20, min = 0, max = 1)
+v3
+v4 <- as.character(names(v2) <- sample(LETTERS[1:20]))
+v4
+m1<- cbind(v1,v2)
+m1
+m2<- cbind(v2,v3)
+m2
+m3<- cbind(v3,v4)
+
+m3 <- as.numeric(m3)
+
+DF<- data.frame(v1,v2,v3,v4)
+DF
+colnames(DF) <- c( "a","b","c","grp")
+DF
 
 
+d1 <- mycalc(v1,v2,"sum")
+d1
+d2 <- mycalc(v2,v3,"sum")
+d2
+d3 <- mycalc(v1,v3,"sum")
+d3
+d4 <- mycalc(m1, m1,"sum")
+d4
+d5 <- mycalc(m1,m2,"sum")
+d5
+d6 <- mycalc(m2,m3,"sum")
+d6
+
+s1 <- mycalc(v1,v2,"divide")
+s1
+s2 <- mycalc(v2,v3,"divide")
+s2
+s3 <- mycalc(v1,v3,"divide")
+s3
+s4 <- mycalc(m1, m1,"divide")
+s4
+s5 <- mycalc(m1,m2,"divide")
+s5
+s6 <- mycalc(m2,m3,"divide")
+s6
+library(dplyr)
+DF <- DF %>% subset(grp == "E")
+
+mycalc(x=DF[1,1], y=DF[1,2], "multiply")
+mycalc(x=DF[1:10,1:3], y=DF[1:10,1:3], "multiply")
+
+mycalc(x=DF$a, y=DF$b, "divide")
+mycalc(x=DF$a, y=DF$c, "divide")
 
 
 ```
