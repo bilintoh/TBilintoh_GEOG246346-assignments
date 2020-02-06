@@ -106,6 +106,7 @@ q <- sapply(1:length(l),function(x){
 })
 q
 
+
 ```
 
 I will be adding others, and updating this vignette as we go.
