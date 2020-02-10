@@ -1,0 +1,75 @@
+---
+title: "Overview of the lde3462a Package"
+author: "Thomas Bilintoh"
+date: "2020-02-09"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Overview2}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+## Loading the necessary libraries and defining varibles
+```{r,error = TRUE}
+library(tb346a2)
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+
+set.seed(1)
+t1 <- tibble(v1 = paste0("G", 1:10), v2 = runif(10,min = 75, max = 125))
+t1
+ 
+t2 <- tibble(v1 = paste0("G", 1:15),  v3 = sample(LETTERS[1:6],size= 15, replace = TRUE))
+t2
+
+t3 <- tibble(v1 = paste0("G", 1:20),  v4 = rnorm(20,mean = 100, sd = 20))
+ 
+```
+
+## Let's joini t1, t2, and t3 within a single pipeline, using:
+
+* left_join
+* right_join
+* full_join
+* inner_join
+
+
+```{r,error = TRUE}
+left_join(t1, t2) %>% left_join(., t3)
+
+right_join(t1, t2) %>% right_join(., t3)
+
+full_join(t1, t2) %>% full_join(., t3)
+
+inner_join(t1, t2) %>% inner_join(., t3)
+ 
+```
+
+#Using `lapply` to read in csv files from the package extdata/ folder
+```{r,error = TRUE}
+a <- dir(system.file("extdata/", package = "geospaar"), pattern = "FAOSTAT", 
+          full.names = TRUE)
+
+crops <- lapply(a, readr::read_csv)
+
+ 
+```
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
